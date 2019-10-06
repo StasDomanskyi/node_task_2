@@ -2,18 +2,22 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const task = require('./payload/task');
-const user = require('./payload/user');
-const board = require('./payload/board');
+const tasks = require('./payload/tasks');
+const users = require('./payload/users');
+const boards = require('./payload/boards');
 
 app.get('/', (req, res) => res.send('Wellcome to Express\'ive api!'));
 
-app.get('/users', user.getAll);
-app.get('/user/:id', user.getOne);
-app.post('/user', user.add);
-app.put('/user/:id', user.change);
-app.delete('/user/:id', user.delete);
+app.get('/users', users.getAll);
+app.get('/user/:id', users.getOne);
+app.post('/user', users.add);
+app.put('/user/:id', users.change);
+app.delete('/user/:id', users.delete);
 
-app.get('/board', (req, res) => res.send(board));
+app.get('/boards', boards.getAll);
+app.get('/board/:id', boards.getOne);
+app.post('/board', boards.add);
+app.put('/board/:id', boards.change);
+app.delete('/board/:id', boards.delete);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

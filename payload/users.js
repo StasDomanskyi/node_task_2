@@ -3,7 +3,7 @@ let newUser = {
   "fullName": "Van Burren",
   "email": "van-burren@gmail.com",
 };
-
+  
 let users = [
   {
     "name": "John",
@@ -27,17 +27,23 @@ let users = [
 
 module.exports = {
   getAll: (req, res) => {
-    res.send(users)
+    res.send(users);
   },
+
   getOne: (req, res) => {
+    if (req.params.id > users.length) {
+      res.send('No user under such id exists.');
+    }
+    
     res.send(users[req.params.id - 1]);
   },
+
   add:  (req, res) => {
-    let userIndex = users.findIndex(user => req.params.id === user.id);
-    let noUser = userIndex === -1
+    let userIndex = users.findIndex(user => +req.params.id === +user.id);
+    let noUser = userIndex === -1;
     
     if (noUser) {
-      newUser["id"] = users.length;
+      newUser["id"] = users.length + 1;
       users.push(newUser);
       res.send(newUser);
     }
@@ -45,22 +51,21 @@ module.exports = {
       res.send("Such user already exists");
     }
   },
-  change: (req, res) => {
-    let userIndex = users.findIndex(user => { 
-      return +req.params.id === +user.id;
-    });
 
+  change: (req, res) => {
+    let userIndex = users.findIndex(user => +req.params.id === +user.id);
     let noUser = userIndex === -1;
+
     if (!noUser) {
       users[userIndex].name = "Gary";
-      console.log(users[userIndex]);
       res.send(users[userIndex]);
     } else {
       res.send("No user exists");
     }
   },
+
   delete: (req, res) => {
-    let userIndex = users.findIndex(user => { 
+    let userIndex = users.findIndex(user => {
       return +req.params.id === +user.id;
     });
 
@@ -68,8 +73,6 @@ module.exports = {
     if (!noUser) {
       res.send(users[userIndex]);
       users.splice(userIndex, 1);
-      
-      console.log(users);
     } else {
       res.send("No user exists");
     }
