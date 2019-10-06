@@ -48,7 +48,6 @@ module.exports = {
   change: (req, res) => {
     let boardIndex = boards.findIndex(board => +req.params.id === +board.id);
     let noBoard = boardIndex === -1;
-    console.log(noBoard);
   
     if (!noBoard) {
       boards[boardIndex]["title"] = "Important Tasks";

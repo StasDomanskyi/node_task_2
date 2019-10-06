@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const tasks = require('./payload/tasks');
+const tasks = require('./payload/tasks/tasks');
 const users = require('./payload/users');
 const boards = require('./payload/boards/boards');
 
@@ -19,5 +19,11 @@ app.get('/board/:id', boards.getOne);
 app.post('/board', boards.add);
 app.put('/board/:id', boards.change);
 app.delete('/board/:id', boards.delete);
+
+app.get('/tasks', tasks.getAll);
+app.get('/task/:id', tasks.getOne);
+app.post('/task', tasks.add);
+app.put('/task/:id', tasks.change);
+app.delete('/task/:id', tasks.delete);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
