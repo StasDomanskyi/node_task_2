@@ -4,7 +4,7 @@ const port = 3000;
 
 const tasks = require('./payload/tasks');
 const users = require('./payload/users');
-const boards = require('./payload/boards');
+const boards = require('./payload/boards/boards');
 
 app.get('/', (req, res) => res.send('Wellcome to Express\'ive api!'));
 
