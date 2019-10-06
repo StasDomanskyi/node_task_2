@@ -9,7 +9,7 @@ Let's try to create a competitor for Trello!
 2. For each entity should be created REST endpoints
 
 3. For now, this endpoints should operate only with in-memory (hardcoded) data, in the next tasks we will use a DB for it. You may organize your modules with the consideration that the data source will be changed soon.
-
-4. An `appplication/json` format should be used for request and response body.
+`appplication/json` format
+4. An  should be used for request and response body.
 
 5. Do not put everything in one file - use a separate file for application creation (bootstrapping), for controllers (routers) and code related to business logic. Also split files to different modules depends on a domain (user-related, board-related, etc...).
