@@ -40,7 +40,7 @@ module.exports = {
     let noTask = taskIndex === -1;
   
     if (!noTask) {
-      tasks[taskIndex]["title"] = "Purchase that stuff immideately";
+      tasks[taskIndex]["title"] = "Clear that stuff immideately";
       res.send(tasks[taskIndex]);
     }
     else {
@@ -49,16 +49,14 @@ module.exports = {
   },
 
   delete: (req, res) => {
-    let taskIndex = tasks.findIndex(task => {
-      return +req.params.id === +task.id;
-    });
-
+    let taskIndex = tasks.findIndex(task => +req.params.id === +task.id);
     let noTask = taskIndex === -1;
+
     if (!noTask) {
       res.send(tasks[taskIndex]);
       tasks.splice(taskIndex, 1);
     } else {
-      res.send("No task exists");
+      res.send("Such task already doesn't exists");
     }
   }
 };  

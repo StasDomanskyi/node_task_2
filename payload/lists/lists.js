@@ -1,31 +1,20 @@
-const Board = require('./Board');
-
-const boards = [
-  {
-    "id": 1,
-    "title": "Yesterday tasks",
-  },
-  {
-    "id": 2,
-    "title": "Today tasks"
-  },
-  {
-    "id": 3,
-    "title": "Tomorrow tasks"
-  }
-]; 
+const ListGenerator = require('./ListGenerator');
+const yesterdayLists = require('./yesterday');
+const todayLists = require('./today');
+const tomorrowLists = require('./tomorrow');
 
 module.exports = {
-  getAll: (req, res) => {
-    res.send(boards);
+  getAll: (req, res, when) => {
+    
+    res.send(lists);
   },
 
   getOne: (req, res) => {
-    if (req.params.id > boards.length) {
-      res.send('No board under such id exists.');
+    if (req.params.id > lists.length) {
+      res.send('No list under such id exists.');
     }
 
-    res.send(boards[req.params.id - 1]);
+    res.send(lists[req.params.id - 1]);
   },
 
   add:  (req, res) => {

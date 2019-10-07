@@ -3,15 +3,15 @@ const Board = require('./Board');
 const boards = [
   {
     "id": 1,
-    "title": "Yesterday tasks",
+    "title": "Yesterday tasklist",
   },
   {
     "id": 2,
-    "title": "Today tasks"
+    "title": "Today tasklist"
   },
   {
     "id": 3,
-    "title": "Tomorrow tasks"
+    "title": "Tomorrow tasklist"
   }
 ]; 
 

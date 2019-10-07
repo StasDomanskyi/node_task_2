@@ -1,29 +1,5 @@
-let newUser = {
-  "name": "Van",
-  "fullName": "Van Burren",
-  "email": "van-burren@gmail.com",
-};
-  
-let users = [
-  {
-    "name": "John",
-    "fullName": "Elton John",
-    "email": "elt@gmail.com",
-    "id": 1
-  },
-  {
-    "name": "Ween",
-    "fullName": "Meloween",
-    "email": "meloween@gmail.com",
-    "id": 2
-  },
-  {
-    "name": "Johny",
-    "fullName": "Cash",
-    "email": "Johny_Cash@gmail.com",
-    "id": 3
-  }
-];
+const users = require('./usersData');
+const newUser = require('./newUser');
 
 module.exports = {
   getAll: (req, res) => {

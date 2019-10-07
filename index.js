@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 const tasks = require('./payload/tasks/tasks');
-const users = require('./payload/users');
+const users = require('./payload/users/users');
 const boards = require('./payload/boards/boards');
 
 app.get('/', (req, res) => res.send('Wellcome to Express\'ive api!'));
@@ -19,6 +19,12 @@ app.get('/board/:id', boards.getOne);
 app.post('/board', boards.add);
 app.put('/board/:id', boards.change);
 app.delete('/board/:id', boards.delete);
+
+app.get('/board/:boardId/lists', lists.getAll);
+app.get('/board/:boardId/list/:listId', lists.getOne);
+app.post('/board/:boardId/list', lists.add);
+app.put('/board/:boardId/list/:listId', lists.change);
+app.delete('/board/:boardId/list/:listId', lists.delete);
 
 app.get('/tasks', tasks.getAll);
 app.get('/task/:id', tasks.getOne);

@@ -7,6 +7,9 @@ module.exports = (id) => {
   let randomIndex = Math.floor(Math.random() * verbs.length);
   return {
     "id": id,
-    "title": `${verbs[randomIndex]} that stuff`
+    "title": `${verbs[randomIndex]} that stuff`,
+    "order": 1,
+    "assignee": "user",
+    "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam, officiis."
   }
 };
