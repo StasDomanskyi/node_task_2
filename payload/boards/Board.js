@@ -1,6 +1,6 @@
 module.exports = (id) => {
-    return {
-        "id": id,
-        "title": "Important tasks"
-    }
+  return {
+    "id": id,
+    "title": "Future tasks"
+  }
 }

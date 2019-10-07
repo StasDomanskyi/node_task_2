@@ -1,19 +1,5 @@
 const Board = require('./Board');
-
-const boards = [
-  {
-    "id": 1,
-    "title": "Yesterday tasklist",
-  },
-  {
-    "id": 2,
-    "title": "Today tasklist"
-  },
-  {
-    "id": 3,
-    "title": "Tomorrow tasklist"
-  }
-]; 
+const boards = require('./boardsData');
 
 module.exports = {
   getAll: (req, res) => {

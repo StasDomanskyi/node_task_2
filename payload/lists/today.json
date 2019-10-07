@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Job tasks",
+    "order": "Important"
+  },
+  {
+    "id": 2,
+    "title": "Family Tasks",
+    "order": "Important"
+  },
+  {
+    "id": 3,
+    "title": "Home Tasks",
+    "order": "Desired"
+  },
+  {
+    "id": 4,
+    "title": "Entertainment",
+    "order": "Harebrained"
+  }
+]

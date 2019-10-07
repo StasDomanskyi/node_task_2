@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
+const lists = require('./payload/lists/lists');
 const tasks = require('./payload/tasks/tasks');
 const users = require('./payload/users/users');
 const boards = require('./payload/boards/boards');
