@@ -27,8 +27,9 @@ app.post('/board/:boardId/list', lists.add);
 app.put('/board/:boardId/list/:listId', lists.change);
 app.delete('/board/:boardId/list/:listId', lists.delete);
 // TASKS
-app.get('/board/:boardId/list/:listId/tasks', tasks.getAll);
-app.get('/board/:boardId/list/:listId/task/:id', tasks.getOne);
+app.get('/tasks', tasks.getAll);
+app.get('/board/:boardId/list/:listId/tasks', tasks.getList);
+app.get('/board/:boardId/list/:listId/task/:taskId', tasks.getOne);
 app.post('/board/:boardId/list/:listId/task', tasks.add);
 app.put('/board/:boardId/list/:listId/task/:id', tasks.change);
 app.delete('/board/:boardId/list/:listId/task/:id', tasks.delete);

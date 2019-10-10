@@ -1,22 +1,5 @@
-const ListGenerator = require('./ListGenerator');
-const boards = require('../boards/boardsData');
-const yesterdayLists = require('./yesterday');
-const todayLists = require('./today');
-const tomorrowLists = require('./tomorrow');
-
-function findBoard (req) {
-  let boardIndex = boards.findIndex(board => +req.params.boardId === +board.id);
-  let noBoard = boardIndex === -1;
-  if (noBoard) {
-    return 'There is no board with such id.';
-  } else if (boards[boardIndex].title === "Yesterday tasklist") {
-    return yesterdayLists;
-  } else if (boards[boardIndex].title === "Today tasklist") {
-    return todayLists;
-  } else if (boards[boardIndex].title === "Tomorrow tasklist") {
-    return tomorrowLists;
-  }
-}
+const ListGenerator = require('../../functions/ListGenerator');
+const findBoard = require('../../functions/findBoard');
 
 module.exports = {
   getAll: (req, res) => {
@@ -40,18 +23,33 @@ module.exports = {
 
   add:  (req, res) => {
     let gottenLists = findBoard(req);
-    let listIndex = gottenLists.findIndex(list => +req.params.listId === +list.id);
-    let noList = listIndex === -1;
+    let newItemNumber = gottenLists.length + 1;
+    let boardId = req.params.boardId;
+    let i = -1, noList, newListInstance, savedItem, end;
     
-    if (noList) {
-      let newItemNumber = gottenLists.length + 1;  
-      let newListInstance = ListGenerator(newItemNumber); 
+    do {
+      i++;
+      end = gottenLists.length;
 
-      gottenLists.push(newListInstance);
-      res.send(newListInstance);
-    }
-    else {
-      res.send("Such list already exists");
+      newListInstance = ListGenerator(newItemNumber, boardId, i);
+      if (!newListInstance.order) {
+        break;
+      }
+
+      let listIndex = gottenLists.findIndex(item => item.order === newListInstance.order);
+      noList = listIndex === -1;
+      
+      if (newListInstance.order) {
+        savedItem = newListInstance;
+      }
+
+    } while (i < end && !noList);
+
+    if (noList && savedItem) {
+      gottenLists.push(savedItem);
+      res.send(savedItem);
+    } else {
+      res.send('Such tasklist already exists');
     }
   },
 
@@ -70,7 +68,7 @@ module.exports = {
       return;
     }
 
-    gottenLists[listIndex]["title"] = "Insanely hard tasks";
+    gottenLists[listIndex]["description"] = "Should be done till Monday";
     res.send(gottenLists[listIndex]);
     return;
   },
@@ -90,7 +88,7 @@ module.exports = {
       res.send(gottenLists[listIndex]);
       gottenLists.splice(listIndex, 1);
     } else {
-      res.send("No board exists");
+      res.send("Such list doesn't exists");
     }
   }
 };  

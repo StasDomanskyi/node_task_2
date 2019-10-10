@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "title": "Job tasks",
-    "order": "Important"
+    "title": "Board #1",
+    "order": "Job"
   },
   {
     "id": 2,
-    "title": "Home Tasks",
-    "order": "Desired"
+    "title": "Board #1",
+    "order": "Home"
   },
   {
     "id": 3,
-    "title": "Entertainment",
-    "order": "Harebrained"
+    "title": "Board #1",
+    "order": "Entertainment"
   }
 ]

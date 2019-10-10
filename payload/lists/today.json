@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "title": "Job tasks",
-    "order": "Important"
+    "title": "Board #2",
+    "order": "Job"
   },
   {
     "id": 2,
-    "title": "Family Tasks",
-    "order": "Important"
+    "title": "Board #2",
+    "order": "Family"
   },
   {
     "id": 3,
-    "title": "Home Tasks",
-    "order": "Desired"
+    "title": "Board #2",
+    "order": "Home"
   },
   {
     "id": 4,
-    "title": "Entertainment",
-    "order": "Harebrained"
+    "title": "Board #2",
+    "order": "Entertainment"
   }
 ]

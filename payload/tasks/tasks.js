@@ -1,26 +1,47 @@
-const TaskGenerator = require('./TaskGenerator');
-
-let tasks = [
-  TaskGenerator(1),
-  TaskGenerator(2),
-  TaskGenerator(3),
-];
+const TaskGenerator = require('../../functions/TaskGenerator');
+const ordersArray = require('../lists/ordersArray');
+let tasks = [];
+  
+for(let i = 1; i <= 20; i++) {
+  tasks.push(TaskGenerator(i));
+}
 
 module.exports = {
   getAll: (req, res) => {
     res.send(tasks);
   },
 
-  getOne: (req, res) => {
-    if (req.params.id > tasks.length) {
-      res.send('No task under such id exists.');
+  getList: (req, res) => {
+    let currentTitle = ordersArray[req.params.listId - 1];
+    if (!currentTitle) {
+      res.send('Theres is no tasks under such id');
+      return;
     }
 
-    res.send(tasks[req.params.id - 1]);
+    let newArr = tasks.filter(task => task.title === currentTitle);
+    res.send(newArr);
+  },
+
+  getOne: (req, res) => {
+    let currentTitle = ordersArray[req.params.listId - 1];
+    if (!currentTitle) {
+      res.send('Theres is no tasks under such id');
+      return;
+    }
+    
+    let tasksArray = tasks.filter(task => task.title === currentTitle);
+    res.send(tasksArray[req.params.taskId - 1]);
   },
 
   add:  (req, res) => {
-    let taskIndex = tasks.findIndex(task => +req.params.id === +task.id);
+    let currentTitle = ordersArray[req.params.listId - 1];
+    if (!currentTitle) {
+      res.send('Theres is no tasks under such title');
+      return;
+    }
+    
+    let tasksArray = tasks.filter(task => task.title === currentTitle);
+    let taskIndex = tasksArray.findIndex(task => +req.params.id === +task.id);
     let noTask = taskIndex === -1;
     
     if (noTask) {

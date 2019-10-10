@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "title": "Family Tasks",
-    "order": "Important"
+    "title": "Board #3",
+    "order": "Family"
   }, 
   {
     "id": 2,
-    "title": "Entertainment",
-    "order": "Important"
+    "title": "Board #4",
+    "order": "Entertainment"
   }
 ]

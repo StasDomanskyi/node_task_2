@@ -1,4 +1,4 @@
-const Board = require('./Board');
+const BoardGenerator = require('../../functions/BoardGenerator');
 const boards = require('./boardsData');
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
     
     if (noBoard) {
       let newItemNumber = boards.length + 1;  
-      let newBoardInstance = Board(newItemNumber); 
+      let newBoardInstance = BoardGenerator(newItemNumber); 
 
       
       boards.push(newBoardInstance);
@@ -36,7 +36,7 @@ module.exports = {
     let noBoard = boardIndex === -1;
   
     if (!noBoard) {
-      boards[boardIndex]["title"] = "Important Tasks";
+      boards[boardIndex]["description"] = "Extremely important Tasks";
       res.send(boards[boardIndex]);
     }
     else {
