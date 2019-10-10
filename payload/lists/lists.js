@@ -14,10 +14,12 @@ module.exports = {
       res.send(gottenLists);
       return;
     }
-    if (req.params.listId > gottenLists.length) {
+
+    if (req.params.listId > gottenLists.length || req.params.listId <= 0) {
       res.send('No list under such id exists.');
       return;
     }
+
     res.send(gottenLists[req.params.listId - 1]);
   },
 
@@ -62,8 +64,8 @@ module.exports = {
     }
 
     let listIndex = gottenLists.findIndex(list => +req.params.listId === +list.id);
-
-    if (req.params.listId > gottenLists.length) {
+    
+    if (req.params.listId > gottenLists.length || req.params.listId <= 0) {
       res.send('No list under such id exists.');
       return;
     }

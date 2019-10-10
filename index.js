@@ -28,6 +28,7 @@ app.put('/board/:boardId/list/:listId', lists.change);
 app.delete('/board/:boardId/list/:listId', lists.delete);
 // TASKS
 app.get('/tasks', tasks.getAll);
+app.get('/user/:userId/tasks', tasks.getUserTasks);
 app.get('/board/:boardId/list/:listId/tasks', tasks.getList);
 app.get('/board/:boardId/list/:listId/task/:taskId', tasks.getOne);
 app.post('/board/:boardId/list/:listId/task', tasks.add);
